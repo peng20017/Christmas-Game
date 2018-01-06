@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>驯鹿造反战记</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="full-screen" content="yes">
+	<meta name="Description" itemprop="description" content="Warning！！！这是一个既搞笑又有难度的小游戏，手残人士慎入！！！" id="desc" />
+	<meta name="browsermode" content="application">
+	<meta itemprop="name" content="驯鹿造反战记" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta itemprop="image" content="img/sharelogo.png" />
+	<link rel="prefetch" href="mp3/bgm.mp3" />
+	<link rel="prefetch" href="mp3/failure.mp3" />
+	<link rel="prefetch" href="mp3/victory.mp3" />
+	<style type="text/css">
+		*{margin:0;padding:0}body,html{width:100%;height:100%;font-family:Helvetica}body{background:url("img/gamebg.png")}a{text-decoration:none}li{list-style:none}img{vertical-align:middle}#print{height:100%;width:100%;overflow:hidden;opacity:0}#touchPosition{width:45%;height:45%;position:absolute;bottom:0;left:0;z-index:100}#imgwarp{width:7%;height:8.2%;position:absolute;z-index:300}#rotatewrap{width:100%;height:100%;position:absolute}#reword{position:absolute;height:15px;bottom:20%;left:0;color:#fff;font-size:15px;z-index:100}.gameWrap{height:200%;width:100%;position:absolute;left:0;bottom:0;overflow:hidden;background:url(img/snow.png)no-repeat;background-size:cover}.claus{position:absolute;width:100%;bottom:0;left:0;-webkit-transform:rotateZ(0);-ms-transform:rotateZ(0);-moz-transform:rotateZ(0);-o-transform:rotateZ(0);transform:rotateZ(0)}.progressBar{width:100%;height:6.6%;font-size:20px;position:absolute;left:0;bottom:0;z-index:100;background:url("img/bottombg.png") no-repeat;background-size:cover}#gameTitle{font-size: 18px;font-weight: bolder;}#line{display:inline-block;position:absolute;width:0;left:0;right:0;bottom:0;margin:auto;height:200%;border:1px dashed #fff;transform-origin:0 100%;z-index:-10;display:none}@media screen and (-webkit-min-device-pixel-ratio: 2){.#line{border:0.5px solid #fff}}@media screen and (-webkit-min-device-pixel-ratio: 3){.#line{border:0.333333px solid #fff}}#target{position:absolute;width:12%;z-index:15;right:5.7%;bottom:17%}#reindeer{position:absolute;width:10.5%;left:1%;bottom:5.5%;z-index:100;overflow:hidden}#reindeer img{width:600%}.energywrap{position:absolute;width:19.36%;height:100%;bottom:0;right:23.23%;margin:auto;background:url("img/energy.png") no-repeat center center;background-size:100% auto;overflow:hidden}#energyMask{display:inline-block;position:absolute;width:91%;right:0;bottom:0;top:0;left:0;margin:auto;z-index:100;overflow:hidden}#energyMask img{position:absolute;width:100%;top:0;bottom:0;right:0;margin:auto}.startWrap{opacity: 0; width:100%;height:100%;position:absolute;top:0;left:0;z-index:300}.startimgWrap{width:100%;height:80%;position:absolute;left:0;right:0;bottom:0;top:0;margin:auto;z-index:300}.startimgWrap img{}.imgWrap{width:100%;text-align:right}.imgWrap img{display:inline-block;margin-right:20%;width:60%;margin-top:5%}#goButton{position:absolute;display:inline-block;width:13%;height:100%;background:url("img/longTap.png") no-repeat center center;background-size:100% auto;z-index:100;right:5%}.home{position:absolute;right:0;bottom:5%;width:20%;z-index:100}.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;background-size:cover}.snow-container canvas{width:100%;height:100%}#mucsicbg{position:absolute;z-index:150;width:10%;width:7%;left:3%;top:3%}#row{width:36%;height:auto;position:absolute;right:35%;bottom:22%}#goshare{display:none;position:absolute;width:60%;top:0;right:0;opacity:0;z-index:400}#speek{position:absolute;width:20%;right:0;bottom:35%;opacity:0}#alertMask{width:100%;height:100%;position:absolute;bottom:0;left:0;z-index:400;display:none}.alertDiv{display:none;width:53%;height:55%;background:black;position:absolute;left:0;top:0;right:0;bottom:0;margin:auto}#stopAlert{background:url("img/stopAlert.png") no-repeat;background-size:100% 100%}#failureAlert{background:url("img/failureAlert.png") no-repeat;background-size:100% 100%}#successAlert{background:url("img/gameover.png") no-repeat;background-size:100% 100%}.alertLbtn{width:25%;height:auto;position:absolute;bottom:6%;left:10%}.alertRbtn{width:25%;height:auto;position:absolute;bottom:6%;right:10%}#printShare{position:absolute;top:0;right:0;opacity:0}.fontwrap{padding:20% 6% 10% 6%;text-align:center;font0}.fontwrap p{font-weight:600}#code{position:absolute;margin:auto;width:100%;height:100%;display:none;top:0;left:0;background:rgba(0, 0, 0, .7)}#code img{width:100%;position:absolute;left:0;right:0;bottom:0;top:0;margin:auto}.titleWrap{width:100%;text-align:right}.titleWrap img{display:inline-block;margin-right:15%;width:70%}.animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}.animated.infinite{-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}.animated.hinge{-webkit-animation-duration:2s;animation-duration:2s}@-webkit-keyframes rubberBand{0%{-webkit-transform:scaleX(1);transform:scaleX(1)}30%{-webkit-transform:scale3d(1.25, .75, 1);transform:scale3d(1.25, .75, 1)}40%{-webkit-transform:scale3d(.75, 1.25, 1);transform:scale3d(.75, 1.25, 1)}50%{-webkit-transform:scale3d(1.15, .85, 1);transform:scale3d(1.15, .85, 1)}65%{-webkit-transform:scale3d(.95, 1.05, 1);transform:scale3d(.95, 1.05, 1)}75%{-webkit-transform:scale3d(1.05, .95, 1);transform:scale3d(1.05, .95, 1)}to{-webkit-transform:scaleX(1);transform:scaleX(1)}}@keyframes rubberBand{0%{-webkit-transform:scaleX(1);transform:scaleX(1)}30%{-webkit-transform:scale3d(1.25, .75, 1);transform:scale3d(1.25, .75, 1)}40%{-webkit-transform:scale3d(.75, 1.25, 1);transform:scale3d(.75, 1.25, 1)}50%{-webkit-transform:scale3d(1.15, .85, 1);transform:scale3d(1.15, .85, 1)}65%{-webkit-transform:scale3d(.95, 1.05, 1);transform:scale3d(.95, 1.05, 1)}75%{-webkit-transform:scale3d(1.05, .95, 1);transform:scale3d(1.05, .95, 1)}to{-webkit-transform:scaleX(1);transform:scaleX(1)}}.rubberBand{-webkit-animation-name:rubberBand;animation-name:rubberBand}@-webkit-keyframes bounceIn{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215, .61, .355, 1);animation-timing-function:cubic-bezier(.215, .61, .355, 1)}0%{opacity:0;-webkit-transform:scale3d(.3, .3, .3);transform:scale3d(.3, .3, .3)}20%{-webkit-transform:scale3d(1.1, 1.1, 1.1);transform:scale3d(1.1, 1.1, 1.1)}40%{-webkit-transform:scale3d(.9, .9, .9);transform:scale3d(.9, .9, .9)}60%{opacity:1;-webkit-transform:scale3d(1.03, 1.03, 1.03);transform:scale3d(1.03, 1.03, 1.03)}80%{-webkit-transform:scale3d(.97, .97, .97);transform:scale3d(.97, .97, .97)}to{opacity:1;-webkit-transform:scaleX(1);transform:scaleX(1)}}@keyframes bounceIn{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215, .61, .355, 1);animation-timing-function:cubic-bezier(.215, .61, .355, 1)}0%{opacity:0;-webkit-transform:scale3d(.3, .3, .3);transform:scale3d(.3, .3, .3)}20%{-webkit-transform:scale3d(1.1, 1.1, 1.1);transform:scale3d(1.1, 1.1, 1.1)}40%{-webkit-transform:scale3d(.9, .9, .9);transform:scale3d(.9, .9, .9)}60%{opacity:1;-webkit-transform:scale3d(1.03, 1.03, 1.03);transform:scale3d(1.03, 1.03, 1.03)}80%{-webkit-transform:scale3d(.97, .97, .97);transform:scale3d(.97, .97, .97)}to{opacity:1;-webkit-transform:scaleX(1);transform:scaleX(1)}}.bounceIn{-webkit-animation-name:bounceIn;animation-name:bounceIn}@media screen and (orientation: portrait){html{width:100%;height:100%;overflow:hidden}body{width:100%;height:100%;overflow:hidden}#print{position:absolute}}@media screen and (orientation: landscape){html{width:100%;height:100%}body{width:100%;height:100%}#print{position:absolute;top:0;left:0;width:100%;height:100%}.startimgWrap{height:100%}.imgWrap img{margin-right:35%;width:30%}#goshare{width:50%}#successAlert{height:65%}.fontwrap{padding:5%}#code img{width:40%}}#contentWrap p{margin:20px auto auto;text-align:center}
+	</style>
+</head>
+
+<body>
+	<div class="startWrap"  id="contentWrap">
+		<img src="img/goshare.png" id="goshare" />
+
+		<div class="startimgWrap">
+			<div class="titleWrap">
+				<img src="img/title.png" class="animated rubberBand" />
+			</div>
+			<div class="imgWrap">
+				<img src="img/startGame.png" id="startbtn" />
+			</div>
+			<div class="imgWrap">
+				<img src="img/share.png" id="share" />
+			</div>
+			<div class="imgWrap">
+				<img src="img/find.png" id="findOrganization" />
+			</div>
+			<div id="code">
+				<img src="img/code.jpg" />
+			</div>
+
+		</div>
+	</div>
+	<div class="print" id="print">
+		<div class="gameWrap" id="gameWarp">
+			<div class="snow-container"></div>
+			<!--圣诞老人-->
+			<div id="imgwarp">
+				<img src="img/Santa_1.png" id="claus" class="claus" width="10%" />
+				<span id="line"></span>
+			</div>
+			<!--驯鹿-->
+			<div id="reindeer">
+				<img src="img/reindeer.png" id="reindeerpng" />
+			</div>
+			<!-- touchPosition -->
+			<div id="touchPosition">
+				<img src="img/row.png" id="row">
+			</div>
+			<img src="img/target.png" id="target" />
+			<img src="img/home.gif" class="home" />
+			<img src="img/success_1.png" id="speek" />
+			<div class="progressBar">
+				<span id="reword">点击首页“找到组织”，领取圣诞礼品</span>
+				<div class="energywrap">
+					<div id="energyMask">
+						<img src="img/energyMask.png"></img>
+					</div>
+
+				</div>
+				<span id="goButton"></span>
+			</div>
+		</div>
+		<!-- alert -->
+		<div id="alertMask">
+			<div id="stopAlert" class="alertDiv">
+				<img src="img/goback.png" class="alertLbtn" id="goBack" />
+				<img src="img/goOn.png" class="alertRbtn" id="goOn" />
+			</div>
+			<div id="failureAlert" class="alertDiv">
+				<img src="img/again.png" class="alertLbtn again" />
+				<img src="img/findfriend.png" class="alertRbtn findFriend" />
+			</div>
+			<div id="successAlert" class="alertDiv">
+				<div class="fontwrap">
+					<p id="gameTime">您的驯鹿用了3次把圣诞老人踢进烟囱</p>
+					<p id="successDes">击败了全国80%的驯鹿</p>
+					<p id="gameTitle">获得称号：骚气的少年</p>
+
+				</div>
+				<img src="img/again_1.png" class="alertLbtn again" />
+				<img src="img/show.png" class="alertRbtn findFriend" />
+			</div>
+		</div>
+		<!-- 音频文件 -->
+		<audio id="bgm" preload>
+			<source src="mp3/bgm.mp3"></source>
+		</audio>
+		<audio id="victory" preload>
+			<source src="mp3/victory.mp3"></source>
+		</audio>
+		<audio id="failure" preload>
+			<source src="mp3/failure.mp3"></source>
+		</audio>
+		<img src="img/stop.png" id="mucsicbg" />
+		<img src="img/goshare.png" id="printShare" />
+	</div>
+</body>
+<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+ * Created by SongPeng on 17/12/22
+ * last changeTiem:17/12/23
+ */
+$(document).ready(function() {
+	
+	function beginLoading(sourceImgs, loadingfn, loadingOverfn) {
+		var index = 0;
+		for(var i = 0; i < sourceImgs.length; i += 1) {
+			var imgObj = new Image();
+			imgObj.src = sourceImgs[i];
+			imgObj.onload = function() {
+				index += 1;
+				var value = Math.ceil(index / sourceImgs.length * 100);
+				loadingfn(value);
+				if(index == sourceImgs.length) {
+					loadingOverfn();
+				}
+			}
+		}
+	}
+	
+	var imgArr = ["img/again.png","img/again_1.png","img/bottombg.png","img/code.jpg","img/energy.png","img/energyMask.png","img/failureAlert.png","img/find.png","img/findfriend.png","img/gamebg.png","img/gameover.png","img/goback.png","img/goshare.png","img/goOn.png","img/home.gif","img/leftp.png","img/longTap.png","img/play.png","img/reindeer.png","img/row.png","img/Santa_1.png","img/Santa_2.png","img/Santa_3.png","img/share.png","img/sharelogo.png","img/snow.png","img/startGame.png","img/show.png","img/stop.png","img/stopAlert.png","img/success_1.png","img/success_2.png","img/target.png","img/title.png"];
+	//开启加载
+	beginLoading(imgArr, progessfn, overfn);
+	function progessfn(value) {
+		//加载中的回调函数
+//		console.log(value);
+	}
+	function overfn() {
+		//加载完成的回调函数
+		$("#contentWrap").animate({
+			opacity:1
+		},300);
+		
+	}
+	var init_config = {};
+	var csX = init_config.max_x || 0.7,
+		csY = init_config.max_y || 0.7,
+		numN = init_config.height || 5,
+		g = init_config.g || 0.13,
+		allspeed = Math.sqrt(csX * csX + csY * csY),
+		allcosradina = Math.atan(csY / csX),
+		initialAngle = 90 - Math.floor(180 / (Math.PI / allcosradina)),
+		t = 0,
+		claus = true,
+		timer, touchTime = 0,
+		ifmove = false,
+		touchTimer, lanchStaue = false,
+		startx, starty, movex, movey, endx, endy, nx, ny, angle, gameWidth = document.body.clientWidth,
+		gameHeight = document.body.clientHeight,
+		disx, disy, radina, box = document.getElementById("touchPosition"),
+		origalHeight = gameWidth > gameHeight ? gameHeight : gameWidth,
+		clausWidth = $("#claus").width() / 2,
+		clausHeight = $("#claus").height() / 2,
+		portrait = true,
+		overBottom, initFeft = 11,
+		initBottom = 10,
+		score = 0,
+		playTime = 1,
+		bgm = document.getElementById("bgm"),
+		failure = document.getElementById("failure"),
+		victory = document.getElementById("victory"),
+		bgplay = true,
+		touchStaue = false,
+		desc = document.getElementById("desc"),
+		clausTimer, minY = false,
+		transTimer, deg = 0,
+		alive = true,
+		overTimer, i, L1, R1, T1, B1, L2, R2, T2, B2, L2W, maxDis = gameWidth > gameHeight ? gameWidth : gameHeight,
+		successDate = [{
+			title: "鹿神",
+			kill: "99%"
+		}, {
+			title: "丛林之王",
+			kill: "80%"
+		}, {
+			title: "驯鹿首领",
+			kill: "60%"
+		}, {
+			title: "马戏团的鹿",
+			kill: "40%"
+		}, {
+			title: "年迈的驯鹿",
+			kill: "20%"
+		}];
+	$("#imgwarp").css({
+		left: initFeft + "%",
+		bottom: initBottom + "%"
+	});
+
+	function clausRotate(deg) {
+		$("#imgwarp").css({
+			transform: "rotate(" + deg + "deg)"
+		});
+	}
+
+	function init() {
+		changeOrientation($("#print"));
+	}
+	init();
+
+	function is_weixn_qq() {
+		var ua = navigator.userAgent.toLowerCase();
+		if (ua.match(/MicroMessenger/i) == "micromessenger") {
+			return "weixin"
+		}
+		if (ua.match(/QQ/i) == "qq") {
+			$(".fontwrap").css("padding", "20% 3% 3% 3%")
+		} else {
+			$("#successAlert").css("height", "60%");
+			$(".fontwrap").css("padding", "17% 3% 3% 3%");
+			$(".fontwrap p").css("margin-top", "4px")
+		}
+		return false
+	}
+
+	function changeOrientation($print) {
+		var width = document.documentElement.clientWidth;
+		var height = document.documentElement.clientHeight;
+		if (width < height) {
+			portrait = true;
+			$print.width(height);
+			$print.height(width);
+			$print.css('top', (height - width) / 2);
+			$print.css('left', 0 - (height - width) / 2);
+			$print.css('transform', 'rotate(90deg)');
+			$print.css('transform-origin', '50% 50%');
+			leftp();
+		} else {
+			portrait = false;
+			$("#printShare").css("width","20%");
+			is_weixn_qq()
+		}
+		var evt = "onorientationchange" in window ? "orientationchange" : "resize";
+		window.addEventListener(evt, function () {
+			portrait = false;
+			setTimeout(function () {
+				var width = document.documentElement.clientWidth;
+				var height = document.documentElement.clientHeight;
+				if (width > height) {
+					is_weixn_qq();
+					$print.width(width);
+					$print.height(height);
+					$print.css('top', 0);
+					$print.css('left', 0);
+					$print.css('transform', 'none');
+					$print.css('transform-origin', '50% 50%');
+					$("#printShare").css("width","20%");
+				} else {
+					portrait = true;
+					$print.width(height);
+					$print.height(width);
+					$print.css('top', (height - width) / 2);
+					$print.css('left', 0 - (height - width) / 2);
+					$print.css('transform', 'rotate(90deg)');
+					$print.css('transform-origin', '50% 50%')
+					leftp();
+				}
+			}, 300)
+		}, false)
+	}
+
+	function clausMove(x, y) {
+		$("#line").css("display", "none");
+		clearInterval(clausTimer);
+		clausTimer = setInterval(function () {
+			if (ifmove == true) {
+				t += 1;
+				var disX = csX * numN * touchTime * t + initFeft;
+				var disY = csY * numN * touchTime * t - g * t * t / 2 + initBottom;
+				$("#imgwarp").css({
+					bottom: disY + "%",
+					left: disX + '%'
+				});
+				carsh(imgwarp, target);
+				if (disX >= 95) {
+					die()
+				}
+				if (csY * numN * touchTime - g * t <= 0 && !minY && disY >= 30) {
+					minY = true;
+					clearInterval(transTimer);
+					transTimer = setInterval(function () {
+						if (alive) {
+							deg += 10;
+							$("#imgwarp").css({
+								transform: "rotate(" + deg + "deg)"
+							});
+							if (deg >= 180) {
+								clearInterval(transTimer)
+							}
+						}
+					}, 12)
+				}
+				if (disY <= 2) {
+					die()
+				}
+				if (disY >= 100) {
+					$("div.gameWrap").css({
+						bottom: "-100%"
+					})
+				}
+				if (disY >= 42 && disY < 92) {
+					overBottom = disY - 42;
+					$("div.gameWrap").css({
+						bottom: -overBottom * 2 + "%"
+					})
+				}
+				if (disY < 42) {
+					$("div.gameWrap").css({
+						bottom: "0%"
+					})
+				}
+			}
+		}, 10);
+	}
+
+	function leftp() {
+		$("#printShare").attr("src", "img/leftp.png").css({ left: 0, top: 0, zIndex: 200,width:"30%" });
+	}
+	$("#goButton").on("touchstart", function (ev) {
+		failure.load();
+		victory.load();
+		touchStaue = true;
+		clearInterval(touchTimer);
+		ev = ev || window.event;
+		ev.preventDefault();
+		if (lanchStaue == false && alive) {
+			touchTimer = setInterval(function () {
+				touchTime += 0.02;
+				$("#progress").html(touchTime * 50 + "%");
+				$("#energyMask img").css("right", -touchTime * 50 + "%");
+				if (touchTime >= 2) {
+					clearInterval(touchTimer)
+				}
+			}, 20)
+		}
+	});
+	$("#goButton").on("touchend", function (ev) {
+		clearInterval(touchTimer);
+		ev = ev || window.event;
+		$("#row").css("display", "none");
+		$("#reword").animate({
+			opacity: 0
+		}, 300);
+		ev.preventDefault();
+		$("#energyMask img").animate({
+			right: "0"
+		}, 300);
+		failure.src = "mp3/failure.mp3";
+		victory.src = "mp3/victory.mp3";
+		
+		if (!lanchStaue && alive) {
+			if (touchTime < 2) {
+				clearInterval(touchTimer)
+			}
+			touchTime = Math.round(touchTime * 100) / 200;
+			touchStaue = false;
+			changeReindeer();
+			ifmove = true;
+		}
+	});
+	var ReindeerTimer;
+	var ReindeerNum = 0;
+	i = 1;
+
+	function changeReindeer() {
+		clearInterval(ReindeerTimer);
+		if (!touchStaue) {
+			ReindeerTimer = setInterval(function () {
+				ReindeerNum += i;
+				$("#reindeerpng").css("margin-left", -ReindeerNum * 100 + "%");
+				if (ReindeerNum == 5) {
+					clearInterval(ReindeerTimer);
+					lanchStaue = true;
+					$("#claus").attr("src", "img/Santa_2.png");
+					clausMove();
+					setTimeout(function () {
+						ReindeerNum = 0;
+						$("#reindeerpng").css("margin-left", 0)
+					}, 500)
+				}
+			}, 20)
+		}
+	}
+
+	function touchs(event) {
+		event.preventDefault();
+		if (lanchStaue == false && alive && !touchStaue) {
+			if (event.type == "touchstart") {
+				$("#line").css("display", "block");
+				var touch = event.touches[0];
+				startx = Math.floor(touch.pageX);
+				starty = Math.floor(touch.pageY);
+			} else if (event.type == "touchmove") {
+				var touch = event.touches[0];
+				movex = Math.floor(touch.pageX);
+				movey = Math.floor(touch.pageY);
+				diffX = movex - startx;
+				diffY = movey - starty;
+				getRotate(origalHeight, movex, movey);
+				clausRotate(angle);
+				csX = allspeed * Math.sin(angle * 0.017453293);
+				csY = allspeed * Math.cos(angle * 0.017453293);
+				$("#row").css("display", "none")
+			} else if (event.type == "touchend" || event.type == "touchcancel") {
+				endx = Math.floor(event.changedTouches[0].pageX);
+				endy = Math.floor(event.changedTouches[0].pageY);
+				$("#line").css("display", "none");
+				nx = endx - startx;
+				ny = endy - starty;
+				angle = Math.atan2(ny, nx) * 180 / Math.PI;
+				if (Math.abs(nx) <= 1 || Math.abs(ny) <= 1) {
+					return false;
+				}
+				if (angle < 45 && angle >= -45) {
+					return false
+				} else if (angle < 135 && angle >= 45) {
+					return false
+				} else if ((angle <= 180 && angle >= 135) || (angle >= -180 && angle < -135)) {
+					return false
+				} else if (angle <= -45 && angle >= -135) {
+					return false
+				}
+			}
+		}
+	}
+	box.addEventListener('touchstart', touchs, false);
+	box.addEventListener('touchmove', touchs, false);
+	box.addEventListener('touchend', touchs, false);
+
+	function getRotate(h, x, y) {
+		if (x > 0) {
+			disx = x
+		} else {
+			disx = -x
+		}
+		disy = portrait ? y : h - y;
+		var cos = disy / disx;
+		radina = Math.atan(cos);
+		angle = portrait ? Math.floor(180 / (Math.PI / radina)) : 90 - Math.floor(180 / (Math.PI / radina));
+		if (angle <= 20) {
+			angle = 10
+		}
+		if (angle >= 80) {
+			angle = 80
+		}
+	}
+
+	function carsh(obj1, obj2) {
+		L1 = obj1.offsetLeft;
+		R1 = obj1.offsetLeft + obj1.clientWidth / 2;
+		T1 = obj1.offsetTop;
+		B1 = obj1.offsetTop + obj1.clientHeight;
+		L2 = obj2.offsetLeft;
+		R2 = obj2.offsetLeft + obj2.clientWidth;
+		T2 = obj2.offsetTop;
+		B2 = obj2.offsetTop + obj2.clientHeight;
+		L2L = obj2.offsetLeft + obj2.clientWidth * 0.3;
+		L2R = obj2.offsetLeft + obj2.clientWidth * 1.6;
+		if (R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2) {
+			return false
+		}
+		if (B1 >= T2 && R1 >= L2L && R1 <= L2R && B1 < B2 && csY * numN * touchTime - g * t < 0 && ifmove) {
+			success();
+			return false
+		} else if (ifmove) {
+			die();
+			return false
+		}
+	}
+
+	function die() {
+		ifmove = false;
+		failure.play();
+		clearInterval(transTimer);
+		alive = false;
+		minY = true;
+		playTime += 1;
+		reback();
+		$("#claus").attr("src", "img/Santa_3.png");
+		$("#imgwarp").css({
+			transform: "rotate(0deg)"
+		})
+	}
+
+	function reback() {
+		var title = "title" + playTime;
+		if (playTime >= 6 && score < 1) {
+			$("#alertMask").css("display", "block");
+			bounceIn("#alertMask");
+			$("#failureAlert").css("display", "block");
+			desc.content = "我被这魔性的游戏虐的体无完肤，有木有大神来帮忙报个仇~";
+			
+		}
+		if (playTime <= 6 && score >= 1) {
+			var pTime = playTime - 1;
+			$("#gameTime").html("您的驯鹿用了" + pTime + "次把圣诞老人踢进烟囱");
+			$("#successDes").html("击败了全国" + successDate[pTime - 1].kill + "的驯鹿");
+			$("#gameTitle").html("获得称号:" + successDate[pTime - 1].title);
+			desc.content = "我刚获得了" + successDate[pTime - 1].title + "称号，击败了全国" + successDate[pTime - 1].kill + "的驯鹿，一起来挑战！";
+			$("#alertMask").css("display", "block");
+			bounceIn("#alertMask");
+			$("#successAlert").css("display", "block");
+			
+		}
+		clearInterval(clausTimer);
+		setTimeout(function () {
+			$("#line").css("display", "none");
+			$("#imgwarp").css("display", "none");
+			$("#claus").attr("src", "img/Santa_1.png");
+			$("#imgwarp").css({
+				left: initFeft + "%",
+				bottom: initBottom + "%",
+				zIndex: "300"
+			});
+			setTimeout(function () {
+				alive = true;
+				$("div.gameWrap").css("bottom", "0");
+				minY = false;
+				t = 0;
+				touchTime = 0;
+				touchStaue = false;
+				lanchStaue = false;
+				$("#imgwarp").css({
+					display: "block"
+				});
+				$("#speek").animate({
+					opacity: 0
+				}, 300);
+				$("#imgwarp").css({
+					transform: "rotate(0deg)"
+				})
+			}, 200)
+		}, 1000)
+	}
+
+	function success() {
+		ifmove = false;
+		
+		victory.play();
+		clearInterval(clausTimer);
+		$("#imgwarp").css("z-index", "10").animate({
+			transform: "rotate(0deg)",
+			left: "84.5%",
+			bottom: "34%"
+		}, 300, function () {
+			$(this).animate({
+				bottom: "24%"
+			}, 600, function () {
+				score += 1;
+				playTime += 1;
+				speek()
+			})
+		})
+	}
+
+	function speek() {
+		var i = rand(1, 2);
+		$("#speek").attr("src", "img/success_" + i + ".png").animate({
+			opacity: 1
+		}, 400, function () {
+			reback()
+		})
+	}
+
+	function rand(min, max) {
+		return parseInt(Math.random() * (max - min + 1) + min)
+	}
+	$("#mucsicbg").on("tap", function (ev) {
+		ev.preventDefault();
+		$("#mucsicbg").attr("src", "img/play.png");
+		bgm.pause();
+		bgm.src = "";
+		clearInterval(musicTimer);
+		$("#alertMask").css("display", "block");
+		$("#stopAlert").css("display", "block")
+	});
+	var musicTimer;
+	$("#startbtn").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.preventDefault();
+		$("#mucsicbg").attr("src", "img/stop.png");
+		bgm.src = "mp3/bgm.mp3";
+		bgm.play();
+		clearInterval(musicTimer);
+		musicTimer = setInterval(function () {
+			bgm.src = "mp3/bgm.mp3";
+			bgm.play()
+		}, 13000);
+		$(this).parents("div.startWrap").css("display", "none");
+		$("#print").animate({
+			opacity: 1
+		}, 400, function () {
+			$("#row").addClass("animated rubberBand");
+		})
+	});
+	$("#share").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.preventDefault();
+		event.preventDefault();
+		$("#goshare").css("display", "block").animate({
+			opacity: 1
+		}, 400);
+		$.ajax({
+			type: "post",
+			url: back_url,
+			async: true,
+			data: {
+				"ajax": "share"
+			},
+			success: function (res) { },
+			dataType: 'json'
+		})
+	});
+	$("#goshare").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.stopPropagation();
+		ev.preventDefault();
+		$(this).animate({
+			opacity: 0
+		}, 300, function () {
+			$(this).css("display", "none")
+		})
+	});
+	$("#goBack").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.preventDefault();
+		ev.stopPropagation();
+		clearAlert("#stopAlert");
+		$("div.startWrap").css("display", "block");
+		$("#print").css("opacity", "0")
+	});
+	$("#goOn").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.preventDefault();
+		ev.stopPropagation();
+		clearAlert("#stopAlert");
+		$("#mucsicbg").attr("src", "img/stop.png");
+		bgm.src = "mp3/bgm.mp3";
+		bgm.play();
+		clearInterval(musicTimer);
+		musicTimer = setInterval(function () {
+			bgm.src = "mp3/bgm.mp3";
+			bgm.play()
+		}, 13000)
+	});
+	$("#alertMask .alertDiv .again").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.stopPropagation();
+		ev.preventDefault();
+		clearAlert("#alertMask .alertDiv");
+		reScore();
+	});
+
+	function clearAlert(ele) {
+		$("#alertMask").css("display", "none");
+		$(ele).css("display", "none")
+	}
+
+	function reScore() {
+		score = 0;
+		playTime = 1;
+	}
+
+
+	function bounceIn(ele) {
+		$(ele).removeClass("animated bounceIn");
+		$(ele).addClass("animated bounceIn");
+	}
+
+	$("#alertMask .alertDiv .findFriend").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.stopPropagation();
+		ev.preventDefault();
+		clearAlert("#failureAlert");
+		clearAlert("#successAlert");
+		$("#goshare").css("display", "block");
+		$("#printShare").animate({
+			opacity: 1
+		}, 300);
+		reScore()
+	});
+	$("#printShare").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.stopPropagation();
+		ev.preventDefault();
+		$(this).animate({
+			opacity: 0
+		}, 300, function () {
+			$(this).css("z-index", "10");
+		})
+	});
+	$("#code").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.stopPropagation();
+		$(this).css("display", "none")
+	});
+	$("#findOrganization").on("tap", function (ev) {
+		ev = ev || window.event;
+		ev.stopPropagation();
+		$("#code").css("display", "block")
+	});	
+})
+
+
+	
+
+</script>
+
+</html>
